@@ -1,0 +1,72 @@
+body{
+    background:#e9e9e9;
+}
+
+.navbar{
+    background: #d3d3d3;
+}
+
+.btn{
+    font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: bold;
+}
+
+.easy{
+    color: #212529;
+    font-size:45px;
+    font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.sale{
+    color: #198754;
+        font-size: 45px;
+        font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.container{
+    padding-top: 10px;  
+}
+
+h1{
+    font-size: 38px;
+    font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #198754;
+}
+
+p{
+    font-size: 18px;
+    font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    color: #333;
+}
+
+.meu-perfil{
+    color: #198754;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: inclusive-sans, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.link-verde{
+    color: #198754;
+}
+
+.btn-dark:focus-visible {
+    outline: 2px solid #198754;
+    outline-offset: 2px;    
+    background-color: #212529;
+    box-shadow: none;
+}
+
+.btn-success:focus-visible {
+    outline: 2px solid #212529;
+    outline-offset: 2px;    
+    background-color: #198754;
+    box-shadow: none;
+}
+
+.link-verde:focus-visible {
+    outline: 2px solid #212529;
+    outline-offset: 2px;  
+    border-radius: 2px;  
+}
