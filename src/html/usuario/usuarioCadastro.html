@@ -18,47 +18,146 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="./css/usuarioCadastroStyle.css" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../css/usuario/usuarioCadastroStyle.css" />
     <title>Easy Sale</title>
   </head>
-  <body>
+  <body class="cadastro">
+    <div class="aviso-mobile">
+      <div class="aviso-box">
+        <h2><span class="easy">Easy</span><span class="sale">Sale</span></h2>
+        <p>Este sistema só pode ser utilizado em computadores.</p>
+        <p>Por favor acesse usando um notebook ou desktop.</p>
+      </div>
+    </div>
 
-    <div class="container mt-5 p-4 border rounded">
+    <div class="layout">
+      <div class="lado-esquerdo">
+        <a href="../../index.html"
+          ><i class="bi bi-arrow-left-circle-fill" tabindex="9"></i
+        ></a>
+        <div><span class="easy">Easy</span><span class="sale">Sale</span></div>
+      </div>
 
+      <div class="container p-4 formulario">
         <form>
+          <label for="nome">Nome:</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome completo"
+            class="form-control mb-4"
+            id="nome"
+            name="nome"
+            tabindex="1"
+            autofocus
+          /> <span class="texto-perigoso" id="nome-invalido"></span>
 
-        <label for="nome">Nome:</label>
-        <input type="text" placeholder="Digite seu nome completo" class="form-control mb-3" id="nome" />
-        
-        <label for="cpf">CPF:</label>
-        <input type="text" placeholder="Digite seu CPF" class="form-control mb-3" id="cpf" />
+          <label for="cpf">CPF:</label>
+          <input
+            type="text"
+            placeholder="Digite seu CPF"
+            class="form-control mb-4"
+            id="cpf"
+            name="cpf"
+            tabindex="2"
+            maxlength="14"
+          /> <span class="texto-perigoso" id="cpf-invalido"></span>
 
-        <label for="email">Email:</label>
-        <input type="text" placeholder="Digite seu email" class="form-control mb-3" id="email" />
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            placeholder="Digite seu email"
+            class="form-control mb-4"
+            id="email"
+            name="email"
+            tabindex="3"
+          /> <span class="texto-perigoso" id="email-invalido"></span>
 
-        <label for="senha">Senha:</label>
-        <input type="password" placeholder="Digite sua senha" id="senha" class="form-control mb-3">
+          <div class="mb-4">
+            <label for="senha">Senha:</label>
 
-        <label for="confirmarSenha">Confirmar Senha:</label>
-        <input type="password" placeholder="Confirme sua senha" id="confirmarSenha" class="form-control mb-3">
+            <div class="campo-senha">
+              <input
+                type="password"
+                placeholder="Digite sua senha"
+                id="senha"
+                name="senha"
+                class="form-control"
+                tabindex="4"
+                maxlength="30"
+              /> 
 
-        <div class="container-fluid align-content-between">
-        <label for="tipo">Tipo de Usuário:</label> 
-        <input type="radio" id="tipo" value="USER">Vendedor
-        <input type="radio" id="tipo" value="ADMIN">Administrador
-        </div>
+              <i class="bi bi-eye-fill olho-senha toggle-senha" data-target="senha"></i>
+            </div>
+          </div> <span class="texto-perigoso" id="senha-invalido"></span>
 
-        <button type="button" class="btn btn-primary mt-3">Cadastrar</button>
-        
+          <div class="mb-4">
+            <label for="confirmarSenha">Confirmar Senha:</label>
+
+            <div class="campo-senha">
+              <input
+                type="password"
+                placeholder="Confirme sua senha"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                class="form-control"
+                tabindex="4"
+                maxlength="30"
+              />
+
+              <i class="bi bi-eye-fill olho-senha toggle-senha" data-target="confirmarSenha"></i>
+            </div>
+          </div> <span class="texto-perigoso" id="confirmarSenha-invalido"></span>
+
+          <div class="mb-4">
+            <label for="tipo">Tipo de Usuário:</label>
+            <label>
+              <input
+                type="radio"
+                id="vendedor"
+                value="USER"
+                name="tipoUsuario"
+                tabindex="6"
+                class="ms-4 me-2"
+              />Vendedor
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="administrador"
+                value="ADMIN"
+                name="tipoUsuario"
+                class="ms-4 me-2"
+              />Administrador
+            </label>
+          </div>
+
+          <div class="w-50 mx-auto text-center">
+            <button
+              type="button"
+              class="btn btn-dark mt-3 mb-2 w-50"
+              tabindex="7"
+            >
+              Cadastrar
+            </button>
+            <p class="link-login">
+              Já possui cadastro?
+              <a href="./usuarioLogin.html" class="link-verde" tabindex="8"
+                >Clique aqui</a
+              >
+            </p>
+          </div>
         </form>
-
-
-
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="../../js/usuario/usuarioCadastroScript.js"></script>
   </body>
 </html>
