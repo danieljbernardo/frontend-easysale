@@ -54,7 +54,7 @@ async function enviarCadastro(usuario) {
         try {
             const response = await fetch("/easysale/usuario/cadastrar", {
                 method: "POST",
-                withCredentials: "include",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -62,12 +62,12 @@ async function enviarCadastro(usuario) {
             }); 
 
             if (response.ok) {
-                window.location.href = "./usuarioLoginScript.js";
+                window.location.href = "../../html/usuario/usuarioLogin.html";
             }
 
         }catch (error) {
             if(error.response.status>=400&&error.response.status<500){
-                alert("Erro ao cadastrar usuário. Analise os dados e corrija o que estiver errado.");
+                alert("Erro ao cadastrar usuário. Por favor, verifique os dados e tente novamente.");
             }
             if(error.response.status>=500){
                 alert("Erro no servidor. Por favor, tente novamente mais tarde.");
@@ -85,7 +85,7 @@ cpf.addEventListener("input", () => {
     .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
 });
 
-document.querySelectorAll(".toggle-senha").forEach(icone => {
+document.querySelectorAll(".olho-senha").forEach(icone => {
 
     icone.addEventListener("click", () => {
 
@@ -93,10 +93,10 @@ document.querySelectorAll(".toggle-senha").forEach(icone => {
 
         if(input.type === "password"){
             input.type = "text";
-            icone.classList.replace("bi-eye","bi-eye-slash");
+            icone.classList.replace("bi-eye-fill","bi-eye-slash-fill");
         }else{
             input.type = "password";
-            icone.classList.replace("bi-eye-slash","bi-eye");
+            icone.classList.replace("bi-eye-slash-fill","bi-eye-fill");
         }
 
     });

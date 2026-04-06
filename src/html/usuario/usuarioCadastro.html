@@ -25,7 +25,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../../css/usuario/usuarioCadastroStyle.css" />
+    <link rel="stylesheet" href="../../css/usuarioStyle.css" />
     <title>Easy Sale</title>
   </head>
   <body class="cadastro">
@@ -93,7 +93,7 @@
                 maxlength="30"
               /> 
 
-              <i class="bi bi-eye-fill olho-senha toggle-senha" data-target="senha"></i>
+              <i class="bi bi-eye-fill olho-senha" data-target="senha"></i>
             </div>
           </div> <span class="texto-perigoso" id="senha-invalido"></span>
 
@@ -111,7 +111,7 @@
                 maxlength="30"
               />
 
-              <i class="bi bi-eye-fill olho-senha toggle-senha" data-target="confirmarSenha"></i>
+              <i class="bi bi-eye-fill olho-senha" data-target="confirmarSenha"></i>
             </div>
           </div> <span class="texto-perigoso" id="confirmarSenha-invalido"></span>
 
@@ -142,7 +142,8 @@
             <button
               type="button"
               class="btn btn-dark mt-3 mb-2 w-50"
-              tabindex="7"
+              tabindex="7" 
+              onclick="cadastrastrarUsuario()"
             >
               Cadastrar
             </button>
