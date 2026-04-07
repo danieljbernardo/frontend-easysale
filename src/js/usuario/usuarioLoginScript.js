@@ -19,6 +19,9 @@ async function loginUsuario() {
             }); 
 
             if (response.ok) {
+                const dados= await response.json();
+                localStorage.setItem("token", dados.token);
+                localStorage.setItem("role", dados.role);
                 window.location.href = "../../html/home.html";
             }
 
