@@ -67,6 +67,116 @@
       </button>
     </div>
 
+    <div class="cliente">
+
+      <div class="cliente-pesquisa">
+
+        <h5 style="margin-bottom: 1.5%;">Pesquisar Cliente</h5>
+      
+      <form id="formPesquisa">
+ 
+        <div class="input-group">
+
+         <input type="text" placeholder="Digite um CPF" id="pesquisa" class="form-control" required>
+
+         <button type="submit" class="btn botao-pesquisar"><i class="bi bi-search"></i> Procurar</button>
+         <button type="reset" id="limpar" class="btn botao-limpar">Limpar</button>
+
+         </div>
+
+  </form>
+
+<br>
+
+<form id="formCliente" class="cliente-form" style="display:none">
+
+<div class="row mb-3">
+
+<div class="col-md-6">
+<label class="form-label">Nome</label>
+<input type="text" id="nome" class="form-control" disabled>
+</div>
+
+<div class="col-md-3">
+<label class="form-label">CPF</label>
+<input type="text" id="cpfCliente" class="form-control" disabled>
+</div>
+
+<div class="col-md-3">
+<label class="form-label">Telefone</label>
+<input type="text" id="telefone" class="form-control" disabled>
+</div>
+
+</div>
+
+<div class="botoes-cliente">
+
+<button type="button" id="editar" class="btn botao">
+<i class="bi bi-pencil"></i> Editar
+</button>
+
+<button type="button" id="excluir" class="btn botao-excluir">
+<i class="bi bi-trash"></i> Excluir
+</button>
+
+<button type="submit" id="salvar" class="btn botao" style="display:none;">
+ Salvar
+</button>
+
+</div>
+
+</form>
+    
+  </div>
+
+  </form>
+
+<br>
+
+<div id="cadastro">
+<h5>Cadastrar Cliente</h5>
+
+<form id="formCadastrarCliente">
+
+<div class="row mb-3">
+
+<div class="col-md-6">
+<label class="form-label">Nome</label>
+<input type="text" id="nomeCadastro" class="form-control" required>
+</div>
+
+<div class="col-md-3">
+<label class="form-label">CPF</label>
+<input type="text" id="cpfCadastro" class="form-control" placeholder="000.000.000-00" required>
+</div>
+
+<div class="col-md-3">
+<label class="form-label">Telefone</label>
+<input type="text" id="telefoneCadastro" class="form-control" placeholder="(00) 00000-0000" required>
+</div>
+
+</div>
+
+<div>
+
+<button type="submit" class="btn botao" id="cadastrar">
+<i class="bi bi-person-plus"></i> Cadastrar
+</button>
+
+<button type="reset" class="btn botao-limpar">
+Limpar
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+  </div>
+
+
+    <script src="../js/clienteScript.js"></script>
     
   </body>
 </html>

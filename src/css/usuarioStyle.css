@@ -67,12 +67,6 @@ input[type="radio"]{
     color:#555;
 }
 
-.texto-perigoso{
-    color:#bd0003;
-    font-size:12px;
-    margin-top:5px;
-}
-
 @media (max-width:1024px){
 
     .layout{

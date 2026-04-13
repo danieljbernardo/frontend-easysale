@@ -4,124 +4,105 @@ let email = document.getElementById("email").value.trim();
 let senha = document.getElementById("senha").value.trim();
 let confirmarSenha = document.getElementById("confirmarSenha").value.trim();
 let tipoUsuario = document.querySelector('input[name="tipoUsuario"]:checked');
+const botao = document.getElementById("cadastrarUsuario");
 
+botao.addEventListener("click", (event) => {
+  event.preventDefault();
 
-function cadastrarUsuario() {
+  if (nome === "" || nome.length < 3 || /^[a-zA-Z\s]+$/.test(nome) === false) {
+    alert(
+      "O nome deve conter ao menos 3 letras e não possuir números ou caracteres especiais.",
+    );
+  }
+  if (cpf.value.trim() === "" || validarCPF(cpf.value) === false) {
+    alert("CPF inválido, digite um CPF real.");
+  }
+  if (email === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) === false) {
+    alert("Email inválido, digite um email real.");
+  }
+  if (senha === "" || senha.length < 6) {
+    alert("A senha deve conter ao menos 6 caracteres.");
+  }
+  if (confirmarSenha === "" || confirmarSenha !== senha) {
+    alert("As senhas não coincidem.");
+  }
+  if (tipoUsuario === null) {
+    alert("Selecione um tipo de usuário.");
+  }
 
-    let validacao = true;
-
-    if(nome===""||nome.length<3||/^[a-zA-Z\s]+$/.test(nome)===false){
-        validacao = false;
-        document.getElementById("nome-invalido").textContent = 
-        "O nome deve conter ao menos 3 letras e não possuir números ou caracteres especiais.";
-    }
-    if(cpf.value.trim()===""||validarCPF(cpf.value)===false){
-        validacao = false;
-        document.getElementById("cpf-invalido").textContent = "CPF inválido, digite um CPF real.";
-    }
-    if(email===""||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)===false){
-        validacao = false;
-        document.getElementById("email-invalido").textContent = "Email inválido, digite um email real.";
-    }
-    if(senha===""||senha.length<6){
-        validacao = false;
-        document.getElementById("senha-invalido").textContent = "A senha deve conter ao menos 6 caracteres.";
-    }
-    if(confirmarSenha===""||confirmarSenha!==senha){
-        validacao = false;
-        document.getElementById("confirmarSenha-invalido").textContent = "As senhas não coincidem.";
-    }
-    if(tipoUsuario===null){
-        validacao = false;
-        document.getElementById("tipoUsuario-invalido").textContent = "Selecione um tipo de usuário.";
-    }
-
-    const usuario = {
+  const usuario = {
     nome: nome,
-    cpf: cpf,
+    cpf: cpf.value,
     email: email,
     senha: senha,
-    role: tipoUsuario
-    };
+    role: tipoUsuario,
+  };
 
-    if(validacao){
-     enviarCadastro(usuario);
+  cadastrarUsuario(usuario);
+});
+
+async function cadastrarUsuario(usuario) {
+  try {
+    const response = await fetch("/easysale/usuario/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+
+    if (response.ok) {
+      window.location.href = "../../html/usuario/usuarioLogin.html";
+    } else {
+      const mensagem = await response.text();
+      alert(mensagem);
     }
-
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-async function enviarCadastro(usuario) {
-        try {
-            const response = await fetch("/easysale/usuario/cadastrar", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(usuario)
-            }); 
-
-            if (response.ok) {
-                window.location.href = "../../html/usuario/usuarioLogin.html";
-            }
-
-        }catch (error) {
-            if(error.response.status>=400&&error.response.status<500){
-                alert("Erro ao cadastrar usuário. Por favor, verifique os dados e tente novamente.");
-            }
-            if(error.response.status>=500){
-                alert("Erro no servidor. Por favor, tente novamente mais tarde.");
-            }
-        }
-
-    }
 
 cpf.addEventListener("input", () => {
   cpf.value = cpf.value
     .replace(/\D/g, "")
-    .slice(0, 14)
+    .slice(0, 11)
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 });
 
-document.querySelectorAll(".olho-senha").forEach(icone => {
+document.querySelectorAll(".olho-senha").forEach((icone) => {
+  icone.addEventListener("click", () => {
+    const input = document.getElementById(icone.dataset.target);
 
-    icone.addEventListener("click", () => {
-
-        const input = document.getElementById(icone.dataset.target);
-
-        if(input.type === "password"){
-            input.type = "text";
-            icone.classList.replace("bi-eye-fill","bi-eye-slash-fill");
-        }else{
-            input.type = "password";
-            icone.classList.replace("bi-eye-slash-fill","bi-eye-fill");
-        }
-
-    });
-
+    if (input.type === "password") {
+      input.type = "text";
+      icone.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
+    } else {
+      input.type = "password";
+      icone.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
+    }
+  });
 });
 
-function validarCPF(cpf){
-
+function validarCPF(cpf) {
   cpf = cpf.replace(/\D/g, "");
 
-  if(cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
 
   let soma = 0;
 
-  for(let i=0;i<9;i++) soma += cpf[i]*(10-i);
-  let d1 = (soma*10)%11;
-  if(d1==10) d1=0;
+  for (let i = 0; i < 9; i++) soma += cpf[i] * (10 - i);
+  let d1 = (soma * 10) % 11;
+  if (d1 == 10) d1 = 0;
 
-  if(d1 != cpf[9]) return false;
+  if (d1 != cpf[9]) return false;
 
   soma = 0;
 
-  for(let i=0;i<10;i++) soma += cpf[i]*(11-i);
-  let d2 = (soma*10)%11;
-  if(d2==10) d2=0;
+  for (let i = 0; i < 10; i++) soma += cpf[i] * (11 - i);
+  let d2 = (soma * 10) % 11;
+  if (d2 == 10) d2 = 0;
 
   return d2 == cpf[10];
 }
