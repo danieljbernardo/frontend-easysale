@@ -53,9 +53,9 @@
     border: none;
 }
 
-.logout{
+.logout,
+.excluir-conta{
     border: none;
-    background: #212529;
     color: #e9e9e9;
     font-size: 18px;
     justify-content: center;
@@ -70,8 +70,20 @@
 
     transition: background 0.2s;}
 
-.logout:hover{  
+.logout{
+    background: #212529;
+}
+
+.excluir-conta{
     background: #bd0003;
+}
+
+.logout:hover{  
+    background: #805f00;
+}
+
+.excluir-conta:hover{  
+    background: #7a0001;
 }
 
 .conteudo{
