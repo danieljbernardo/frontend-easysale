@@ -10,6 +10,7 @@ const telefone = document.getElementById("telefone");
 const editarBtn = document.getElementById("editar");
 const salvarBtn = document.getElementById("salvar");
 const excluirBtn = document.getElementById("excluir");
+const cancelarEdicaoBtn = document.getElementById("cancelarEdicaoCliente");
 
 const nomeCadastro = document.getElementById("nomeCadastro");
 const cpfCadastro = document.getElementById("cpfCadastro");
@@ -19,7 +20,7 @@ const token = localStorage.getItem("token");
 
 const formCadastrar = document.getElementById("formCadastrarCliente");
 
-window.onload = async function () {
+window.onload = function () {
   const role = localStorage.getItem("role");
 
   if (role !== "ADMIN") {
@@ -116,6 +117,7 @@ editarBtn.addEventListener("click", () => {
   editarBtn.style.display = "none";
   excluirBtn.style.display = "none";
   salvarBtn.style.display = "inline";
+  cancelarEdicaoBtn.style.display = "inline";
 });
 
 excluirBtn.addEventListener("click", async (event) => {
@@ -151,6 +153,21 @@ excluirBtn.addEventListener("click", async (event) => {
     console.error(error);
   }
 });
+
+cancelarEdicaoBtn.addEventListener("click", async (event) => {
+
+  event.preventDefault();
+
+  nome.disabled = true;
+  cpfCliente.disabled = true;
+  telefone.disabled = true;
+
+  editarBtn.style.display = "inline";
+  salvarBtn.style.display = "none";
+  cancelarEdicaoBtn.style.display = "none";
+  excluirBtn.style.display = "inline";
+});
+
 
 formCliente.addEventListener("submit", async (event) => {
   event.preventDefault();

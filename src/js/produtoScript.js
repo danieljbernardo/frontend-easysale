@@ -11,6 +11,7 @@ const descricao = document.getElementById("descricao");
 const editarBtn = document.getElementById("editar");
 const salvarBtn = document.getElementById("salvar");
 const excluirBtn = document.getElementById("excluir");
+const cancelarEdicaoBtn = document.getElementById("cancelarEdicaoProduto");
 
 const nomeCadastro = document.getElementById("nomeCadastro");
 const codigoCadastro = document.getElementById("codigoCadastro");
@@ -21,7 +22,7 @@ const token = localStorage.getItem("token");
 
 const formCadastrar = document.getElementById("formCadastrarProduto");
 
-window.onload = async function () {
+window.onload = function () {
   const role = localStorage.getItem("role");
 
   if (role !== "ADMIN") {
@@ -98,13 +99,14 @@ editarBtn.addEventListener("click", () => {
   editarBtn.style.display = "none";
   excluirBtn.style.display = "none";
   salvarBtn.style.display = "inline";
+  cancelarEdicaoBtn.style.display = "inline";
 });
 
 formProduto.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (nome.value.trim() === "" || nome.value.trim().length < 2) {
-    alert("O nome deve conter ao menos 2 caracteres.");
+    alert("O nome deve conter ao menos 3 caracteres.");
     return;
   }
 
@@ -126,7 +128,7 @@ formProduto.addEventListener("submit", async (event) => {
   }
 
   const produtoAtualizado = {
-    codigo: codigoEditado, 
+    codigo: codigoEditado,
     nome: nome.value.trim(),
     preco: precoEditado,
     descricao: descricao.value.trim(),
@@ -194,6 +196,22 @@ excluirBtn.addEventListener("click", async (event) => {
     console.error(error);
   }
 });
+
+cancelarEdicaoBtn.addEventListener("click", async(event) => {
+  
+  event.preventDefault();
+
+  nome.disabled = true;
+  codigoProduto.disabled = true;
+  preco.disabled = true;
+  descricao.disabled = true;
+
+  editarBtn.style.display = "inline";
+  excluirBtn.style.display = "inline"
+  salvarBtn.style.display = "none";
+  cancelarEdicaoBtn.style.display = "none";
+});
+
 
 formCadastrar.addEventListener("submit", async (event) => {
   event.preventDefault();

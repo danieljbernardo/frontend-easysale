@@ -23,7 +23,7 @@ botao.addEventListener("click", async (event) => {
       const dados = response.json();
       localStorage.setItem("token", dados.token);
       localStorage.setItem("role", dados.role);
-      window.location.href = "../../html/home.html";
+      location.replace("../../html/home.html");
     } else {
       const mensagem = await response.text();
       alert(mensagem);

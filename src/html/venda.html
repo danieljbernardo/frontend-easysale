@@ -1,66 +1,287 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Sale - Vendas</title>
-    <link
-      rel="icon"
-      href="../imagens/logo32x.png"
-      type="image/png"
-      sizes="32x32"
-    />
-    <link
-      rel="icon"
-      href="../imagens/logo16x.png"
-      type="image/png"
-      sizes="16x16"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../css/homeStyle.css" />
-    <link rel="stylesheet" href="../css/vendaStyle.css" />
-  </head>
 
-  <body>
-    <div class="aviso-mobile">
-      <div class="aviso-box">
-        <h2><span class="easy">Easy</span><span class="sale">Sale</span></h2>
-        <p>Este sistema só pode ser utilizado em computadores.</p>
-        <p>Por favor acesse usando um notebook ou desktop.</p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy Sale - Vendas</title>
+  <link rel="icon" href="../imagens/logo32x.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="../imagens/logo16x.png" type="image/png" sizes="16x16" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/homeStyle.css" />
+  <link rel="stylesheet" href="../css/vendaStyle.css" />
+</head>
+
+<body>
+
+  <div class="aviso-mobile">
+    <div class="aviso-box">
+      <h2><span class="easy">Easy</span><span class="sale">Sale</span></h2>
+      <p>Este sistema só pode ser utilizado em computadores.</p>
+      <p>Por favor acesse usando um notebook ou desktop.</p>
     </div>
+  </div>
 
-    <div class="sidebar">
-      <nav class="menu mt-5">
-        <div class="logo">
-          <span class="easy">Easy</span>
-          <span class="sale">Sale</span>
+  <div class="sidebar">
+    <nav class="menu mt-5">
+      <div class="logo">
+        <span class="easy">Easy</span>
+        <span class="sale">Sale</span>
+      </div>
+      <a href="./cliente.html" class="menu-item mt-5" tabindex="1">CLIENTES</a>
+      <a href="./produto.html" class="menu-item" tabindex="2">PRODUTOS</a>
+      <a href="./venda.html" class="menu-item" tabindex="3">VENDAS</a>
+    </nav>
+    <button type="button" class="logout" tabindex="4" id="logout">
+      <i class="bi bi-box-arrow-left"></i> Logout
+    </button>
+    <button type="button" class="excluir-conta" tabindex="4" id="excluirConta">
+      <i class="bi bi-trash3"></i> Excluir Conta
+    </button>
+  </div>
+
+  <div class="venda">
+
+    <div class="venda-pesquisa">
+
+      <h5 style="margin-bottom: 1.5%;">Pesquisar Venda</h5>
+
+      <form id="formPesquisa">
+        <div class="row mb-3">
+
+          <div class="col-md-4">
+            <label class="form-label">CPF do Cliente</label>
+            <input type="text" id="pesquisaCpf" class="form-control" placeholder="000.000.000-00" required>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Data da Venda</label>
+            <input type="date" id="pesquisaData" class="form-control" required>
+          </div>
+
+          <div class="col-md-5 d-flex align-items-end gap-2">
+            <button type="submit" class="btn botao-pesquisar flex-grow-1">
+              <i class="bi bi-search"></i> Procurar
+            </button>
+            <button type="reset" id="limpar" class="btn botao-limpar">Limpar</button>
+          </div>
+
+        </div>
+      </form>
+
+      <div id="resultadoVenda" style="display: none;">
+
+        <form id="formVenda">
+          <div class="row mb-3">
+
+            <div class="col-md-3">
+              <label class="form-label">CPF do Cliente</label>
+              <input type="text" id="cpfVenda" class="form-control" disabled>
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label">Nota Fiscal</label>
+              <input type="text" id="notaFiscal" class="form-control" disabled readonly>
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label">Data</label>
+              <input type="date" id="dataVenda" class="form-control" disabled>
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label">Pagamento</label>
+              <select id="pagamentoForma" class="form-select" disabled>
+                <option value="DINHEIRO">Dinheiro</option>
+                <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                <option value="CARTAO_DEBITO">Cartão de Débito</option>
+                <option value="PIX">Pix</option>
+              </select>
+            </div>
+
+            <div class="col-md-2">
+              <label class="form-label">Valor Total (R$)</label>
+              <input type="number" id="valorTotal" class="form-control" disabled readonly>
+            </div>
+
+          </div>
+
+          <div class="botoes-venda">
+            <button type="button" id="editarVenda" class="btn botao">
+              <i class="bi bi-pencil"></i> Editar Venda
+            </button>
+            <button type="submit" id="salvarVenda" class="btn botao" style="display:none;">
+              Salvar Venda
+            </button>
+            <button type="button" id="cancelarEdicaoVenda" class="btn botao-limpar" style="display:none;">
+              Cancelar
+            </button>
+
+            <button type="button" id="excluirVenda" class="btn botao-excluir-sm">
+              <i class="bi bi-trash"></i> Excluir Venda
+            </button>
+            <button type="button" id="gerarRelatorio" class="btn botao">
+              <i class="bi bi-file-earmark-pdf"></i> Gerar Relatório PDF
+            </button>
+          </div>
+
+        </form>
+
+        <div class="itens-venda mt-4">
+
+          <div class="itens-header">
+            Itens da Venda
+            <button type="button" id="adicionarItemBtn" class="btn botao-sm">
+              <i class="bi bi-plus-lg"></i> Adicionar Item
+            </button>
+          </div>
+
+          <div id="tabelaItens">
+          </div>
+
+          <div id="formNovoItemWrapper" style="display:none">
+            <div class="novo-item-form row g-2 align-items-end mt-2">
+
+              <div class="col-md-3">
+                <label class="form-label">Código do Produto</label>
+                <input type="number" id="novoItemCodigo" class="form-control" placeholder="100 - 999" min="100"
+                  max="999">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Qtd.</label>
+                <input type="number" id="novoItemQtd" class="form-control" min="1" placeholder="0">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Preço Unit. (R$)</label>
+                <input type="number" id="novoItemPreco" class="form-control" step="0.01" min="0.01" placeholder="0.00">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Subtotal (R$)</label>
+                <input type="number" id="novoItemSubtotal" class="form-control" step="0.01" readonly>
+              </div>
+
+              <div class="col-md-3 d-flex gap-2">
+                <button type="button" id="salvarNovoItem" class="btn botao flex-grow-1">
+                  <i class="bi bi-check-lg"></i> Salvar
+                </button>
+                <button type="button" id="cancelarNovoItem" class="btn botao-limpar">
+                  Cancelar
+                </button>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-        <a href="./cliente.html" class="menu-item mt-5" tabindex="1">
-          CLIENTES
-        </a>
+      </div>
 
-        <a href="./produto.html" class="menu-item" tabindex="2"> PRODUTOS </a>
-
-        <a href="./venda.html" class="menu-item" tabindex="3"> VENDAS </a>
-      </nav>
-
-      <button class="logout" tabindex="4">
-        <i class="bi bi-box-arrow-left"></i>
-        Logout
-      </button>
-      <button class="excluir-conta" tabindex="4">
-        <i class="bi bi-trash3"></i>
-        Excluir Conta
-      </button>
     </div>
-  </body>
+
+    <br>
+
+    <div id="cadastro">
+
+      <h5>Cadastrar Venda</h5>
+
+      <form id="formCadastrarVenda">
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label class="form-label">CPF do Cliente</label>
+            <input type="text" id="cpfCadastro" class="form-control" placeholder="000.000.000-00" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Forma de Pagamento</label>
+            <select id="pagamentoCadastro" class="form-select" required>
+              <option value="" disabled selected>Selecione...</option>
+              <option value="DINHEIRO">Dinheiro</option>
+              <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+              <option value="CARTAO_DEBITO">Cartão de Débito</option>
+              <option value="PIX">Pix</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="itens-cadastro">
+
+          <div class="itens-header mb-2">
+            <h6>Itens da Venda</h6>
+            <button type="button" id="adicionarItemCadastroBtn" class="btn botao-sm">
+              <i class="bi bi-plus-lg"></i> Adicionar Item
+            </button>
+          </div>
+
+          <div id="itensCadastroLista">
+          </div>
+
+          <div id="formItemCadastroWrapper" style="display:none">
+            <div class="novo-item-form row g-2 align-items-end mt-2">
+
+              <div class="col-md-3">
+                <label class="form-label">Código do Produto</label>
+                <input type="number" id="itemCadastroCodigo" class="form-control" placeholder="100 - 999" min="100"
+                  max="999">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Qtd.</label>
+                <input type="number" id="itemCadastroQtd" class="form-control" min="1" placeholder="0">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Preço Unit. (R$)</label>
+                <input type="number" id="itemCadastroPreco" class="form-control" step="0.01" min="0.01"
+                  placeholder="0.00">
+              </div>
+
+              <div class="col-md-2">
+                <label class="form-label">Subtotal (R$)</label>
+                <input type="number" id="itemCadastroSubtotal" class="form-control" step="0.01" readonly>
+              </div>
+
+              <div class="col-md-3 d-flex gap-2">
+                <button type="button" id="confirmarItemCadastro" class="btn botao flex-grow-1">
+                  <i class="bi bi-check-lg"></i> Confirmar
+                </button>
+                <button type="button" id="cancelarItemCadastro" class="btn botao-limpar">
+                  Cancelar
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="total-venda mt-3">
+            <span>Valor Total:</span>
+            <strong id="totalCadastro">R$ 0,00</strong>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn botao" id="cadastrarVenda">
+            <i class="bi bi-receipt"></i> Cadastrar Venda
+          </button>
+          <button type="reset" class="btn botao-limpar">
+            Limpar
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script src="../js/vendaScript.js"></script>
+  <script src="../js/usuario/usuarioToken.js"></script>
+
+</body>
+
 </html>

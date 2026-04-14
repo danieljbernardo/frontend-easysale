@@ -1,193 +1,187 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Sale - Produtos</title>
-    <link
-      rel="icon"
-      href="../imagens/logo32x.png"
-      type="image/png"
-      sizes="32x32"
-    />
-    <link
-      rel="icon"
-      href="../imagens/logo16x.png"
-      type="image/png"
-      sizes="16x16"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../css/homeStyle.css" />
-    <link rel="stylesheet" href="../css/produtoStyle.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy Sale - Produtos</title>
+  <link rel="icon" href="../imagens/logo32x.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="../imagens/logo16x.png" type="image/png" sizes="16x16" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/homeStyle.css" />
+  <link rel="stylesheet" href="../css/produtoStyle.css" />
+</head>
 
-    <div class="aviso-mobile">
-      <div class="aviso-box">
-        <h2><span class="easy">Easy</span><span class="sale">Sale</span></h2>
-        <p>Este sistema só pode ser utilizado em computadores.</p>
-        <p>Por favor acesse usando um notebook ou desktop.</p>
-      </div>
+<body>
+
+  <div class="aviso-mobile">
+    <div class="aviso-box">
+      <h2><span class="easy">Easy</span><span class="sale">Sale</span></h2>
+      <p>Este sistema só pode ser utilizado em computadores.</p>
+      <p>Por favor acesse usando um notebook ou desktop.</p>
     </div>
+  </div>
 
-    <div class="sidebar">
+  <div class="sidebar">
 
-      <nav class="menu mt-5">
+    <nav class="menu mt-5">
 
-        <div class="logo">
-          <span class="easy">Easy</span>
-          <span class="sale">Sale</span>
+      <div class="logo">
+        <span class="easy">Easy</span>
+        <span class="sale">Sale</span>
+      </div>
+
+      <a href="./cliente.html" class="menu-item mt-5" tabindex="1">
+        CLIENTES
+      </a>
+
+      <a href="./produto.html" class="menu-item" tabindex="2">
+        PRODUTOS
+      </a>
+
+      <a href="./venda.html" class="menu-item" tabindex="3">
+        VENDAS
+      </a>
+    </nav>
+
+    <button class="logout" tabindex="4" id="logout">
+      <i class="bi bi-box-arrow-left"></i>
+      Logout
+    </button>
+    <button class="excluir-conta" tabindex="4" id="excluirConta">
+      <i class="bi bi-trash3"></i>
+      Excluir Conta
+    </button>
+
+  </div>
+
+  <div class="produto">
+
+    <div class="produto-pesquisa">
+
+      <h5 style="margin-bottom: 1.5%;">Pesquisar Produto</h5>
+
+      <form id="formPesquisa">
+
+        <div class="input-group">
+
+          <input type="number" placeholder="Digite um código (100-999)" id="pesquisa" class="form-control" min="100"
+            max="999" required>
+
+          <button type="submit" class="btn botao-pesquisar"><i class="bi bi-search"></i> Procurar</button>
+          <button type="reset" id="limpar" class="btn botao-limpar">Limpar</button>
+
         </div>
 
-        <a href="./cliente.html" class="menu-item mt-5" tabindex="1">
-          CLIENTES
-        </a>
-
-        <a href="./produto.html" class="menu-item" tabindex="2">
-          PRODUTOS
-        </a>
-
-        <a href="./venda.html" class="menu-item" tabindex="3">
-          VENDAS
-        </a>
-      </nav>
-
-      <button class="logout" tabindex="4">
-        <i class="bi bi-box-arrow-left"></i>
-        Logout
-      </button>
-      <button class="excluir-conta" tabindex="4">
-        <i class="bi bi-trash3"></i>
-        Excluir Conta
-      </button>
-
-    </div>
-
-    <div class="produto">
-
-      <div class="produto-pesquisa">
-
-        <h5 style="margin-bottom: 1.5%;">Pesquisar Produto</h5>
-
-        <form id="formPesquisa">
-
-          <div class="input-group">
-
-            <input type="number" placeholder="Digite um código (100-999)" id="pesquisa" class="form-control" min="100" max="999" required>
-
-            <button type="submit" class="btn botao-pesquisar"><i class="bi bi-search"></i> Procurar</button>
-            <button type="reset" id="limpar" class="btn botao-limpar">Limpar</button>
-
-          </div>
-
-        </form>
-
-        <br>
-
-        <form id="formProduto" class="produto-form" style="display:none">
-
-          <div class="row mb-3">
-
-            <div class="col-md-5">
-              <label class="form-label">Nome</label>
-              <input type="text" id="nome" class="form-control" disabled>
-            </div>
-
-            <div class="col-md-2">
-              <label class="form-label">Código</label>
-              <input type="number" id="codigoProduto" class="form-control" min="100" max="999" disabled>
-            </div>
-
-            <div class="col-md-2">
-              <label class="form-label">Preço (R$)</label>
-              <input type="number" id="preco" class="form-control" min="0" step="0.01" disabled>
-            </div>
-
-            <div class="col-md-3">
-              <label class="form-label">Descrição</label>
-              <input type="text" id="descricao" class="form-control" disabled>
-            </div>
-
-          </div>
-
-          <div class="botoes-produto">
-
-            <button type="button" id="editar" class="btn botao">
-              <i class="bi bi-pencil"></i> Editar
-            </button>
-
-            <button type="button" id="excluir" class="btn botao-excluir">
-              <i class="bi bi-trash"></i> Excluir
-            </button>
-
-            <button type="submit" id="salvar" class="btn botao" style="display:none;">
-              Salvar
-            </button>
-
-          </div>
-
-        </form>
-
-      </div>
+      </form>
 
       <br>
 
-      <div id="cadastro">
-        <h5>Cadastrar Produto</h5>
+      <form id="formProduto" class="produto-form" style="display: none;">
 
-        <form id="formCadastrarProduto">
+        <div class="row mb-3">
 
-          <div class="row mb-3">
-
-            <div class="col-md-5">
-              <label class="form-label">Nome</label>
-              <input type="text" id="nomeCadastro" class="form-control" required>
-            </div>
-
-            <div class="col-md-2">
-              <label class="form-label">Código</label>
-              <input type="number" id="codigoCadastro" class="form-control" placeholder="100 - 999" min="100" max="999" required>
-            </div>
-
-            <div class="col-md-2">
-              <label class="form-label">Preço (R$)</label>
-              <input type="number" id="precoCadastro" class="form-control" placeholder="0.00" min="0" step="0.01" required>
-            </div>
-
-            <div class="col-md-3">
-              <label class="form-label">Descrição</label>
-              <input type="text" id="descricaoCadastro" class="form-control" required>
-            </div>
-
+          <div class="col-md-5">
+            <label class="form-label">Nome</label>
+            <input type="text" id="nome" class="form-control" disabled>
           </div>
 
-          <div>
-
-            <button type="submit" class="btn botao" id="cadastrar">
-              <i class="bi bi-box-seam"></i> Cadastrar
-            </button>
-
-            <button type="reset" class="btn botao-limpar">
-              Limpar
-            </button>
-
+          <div class="col-md-2">
+            <label class="form-label">Código</label>
+            <input type="number" id="codigoProduto" class="form-control" min="100" max="999" disabled>
           </div>
 
-        </form>
+          <div class="col-md-2">
+            <label class="form-label">Preço (R$)</label>
+            <input type="number" id="preco" class="form-control" min="0" step="0.01" disabled>
+          </div>
 
-      </div>
+          <div class="col-md-3">
+            <label class="form-label">Descrição</label>
+            <input type="text" id="descricao" class="form-control" disabled>
+          </div>
+
+        </div>
+
+        <div class="botoes-produto">
+
+          <button type="button" id="editar" class="btn botao">
+            <i class="bi bi-pencil"></i> Editar
+          </button>
+
+          <button type="button" id="excluir" class="btn botao-excluir">
+            <i class="bi bi-trash"></i> Excluir
+          </button>
+
+          <button type="submit" id="salvar" class="btn botao" style="display:none;">
+            Salvar
+          </button>
+
+          <button type="button" id="cancelarEdicaoProduto" class="btn botao-limpar" style="display:none;">
+            Cancelar
+          </button>
+
+        </div>
+
+      </form>
 
     </div>
 
-    <script src="../js/produtoScript.js"></script>
+    <br>
 
-  </body>
+    <div id="cadastro">
+      <h5>Cadastrar Produto</h5>
+
+      <form id="formCadastrarProduto">
+
+        <div class="row mb-3">
+
+          <div class="col-md-5">
+            <label class="form-label">Nome</label>
+            <input type="text" id="nomeCadastro" class="form-control" required>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">Código</label>
+            <input type="number" id="codigoCadastro" class="form-control" placeholder="100 - 999" min="100" max="999"
+              required>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">Preço (R$)</label>
+            <input type="number" id="precoCadastro" class="form-control" placeholder="0.00" min="0" step="0.01"
+              required>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Descrição</label>
+            <input type="text" id="descricaoCadastro" class="form-control" required>
+          </div>
+
+        </div>
+
+        <div>
+
+          <button type="submit" class="btn botao" id="cadastrar">
+            <i class="bi bi-box-seam"></i> Cadastrar
+          </button>
+
+          <button type="reset" class="btn botao-limpar">
+            Limpar
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script src="../js/produtoScript.js"></script>
+  <script src="../js/usuario/usuarioToken.js"></script>
+
+</body>
+
 </html>

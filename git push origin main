@@ -1,0 +1,35 @@
+[33mcommit 6a88f786687d4af6fee8891f69c36df3f2cbc067[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Tue Apr 14 00:05:37 2026 -0300
+
+    feat: produto
+
+[33mcommit 6002140303e1ae43553274393314d03293304fec[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Mon Apr 13 19:46:53 2026 -0300
+
+    feat: página cliente
+
+[33mcommit 4b18aae853f9f214473bfe63ae15c98ca5cdc39d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Tue Apr 7 20:59:30 2026 -0300
+
+    feat: salvamento do token e role no login
+
+[33mcommit f48d0e52aeb64d4f7203bc6a0027e55922d28014[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Sun Apr 5 23:22:45 2026 -0300
+
+    feat: login do usuário
+
+[33mcommit 0a6af53a170de7f2a2ff1431e8a13511c9b0eb27[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Fri Apr 3 00:10:55 2026 -0300
+
+    feat: cadastro de usuário
+
+[33mcommit 3c0599a473518b697a08a48d68bee6491b8d7b39[m
+Author: danieljbernardo <danieljbernardo07@gmail.com>
+Date:   Mon Mar 30 09:10:34 2026 -0300
+
+    feat: estrutura básica do frontend
