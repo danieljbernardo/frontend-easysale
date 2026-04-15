@@ -34,7 +34,7 @@ btnExcluirConta.addEventListener("click", async (event)=>{
 
          if(!confirmar) return;
 
-         const response = await fetch("/easysale/usuario/excluir-conta", {
+         const response = await fetch("/easysale/usuario/excluir-usuario", {
          method: "DELETE",
          headers: {
           "Content-Type": "application/json",

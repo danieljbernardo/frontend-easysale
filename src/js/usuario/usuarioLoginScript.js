@@ -11,7 +11,7 @@ botao.addEventListener("click", async (event) => {
   };
 
   try {
-    const response = await fetch("/easysale/usuario/login", {
+    const response = await fetch("/easysale/autenticacao/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

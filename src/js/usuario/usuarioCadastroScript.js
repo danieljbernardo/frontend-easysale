@@ -43,7 +43,7 @@ botao.addEventListener("click", (event) => {
 
 async function cadastrarUsuario(usuario) {
   try {
-    const response = await fetch("/easysale/usuario/cadastrar", {
+    const response = await fetch("/easysale/autenticacao/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
